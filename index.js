@@ -13,7 +13,12 @@
  */
 
 var db = require('mime-db')
-var extname = require('path').extname
+
+function extname (path) {
+  var tmp = path.replace(/^[.]+/, '')
+  if (/\./.test(tmp)) return tmp.match(/\.[^.]*$/)[0]
+  return ''
+}
 
 /**
  * Module variables.
